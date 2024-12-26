@@ -1,90 +1,29 @@
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    // Initially display only the admission section
+    const sections = document.querySelectorAll(".content-section");
+    sections.forEach((section) => {
+        if (section.id === "admission") {
+            section.classList.add("active");
+        } else {
+            section.classList.remove("active");
+        }
+    });
 
-header {
-    background-color: #0077cc;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-}
+    // Navigation functionality
+    const navItems = document.querySelectorAll(".nav-item");
+    navItems.forEach((item) => {
+        item.addEventListener("click", function (event) {
+            event.preventDefault();
+            const target = item.getAttribute("data-target");
 
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-    padding: 1rem;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 1rem;
-}
-
-nav a.hidden {
-    display: none;
-}
-
-main {
-    padding: 2rem;
-}
-
-.content-section {
-    display: none;
-}
-
-.content-section.active {
-    display: block;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}/* Form Styles */
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #0077cc;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #005fa3;
-}
+            // Hide all sections and show the clicked one
+            sections.forEach((section) => {
+                if (section.id === target) {
+                    section.classList.add("active");
+                } else {
+                    section.classList.remove("active");
+                }
+            });
+        });
+    });
+});
